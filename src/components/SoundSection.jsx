@@ -2,7 +2,7 @@ import React from "react";
 
 const SoundSection = () => {
     
-  const hnadleLearnMore = () => {
+  const handleLearnMore = () => {
 
     const element = document.querySelector(".display-section")
     window.scrollTo({
@@ -26,7 +26,7 @@ const SoundSection = () => {
               <button className="button">Buy</button>
             </li>
             <li>
-              <a className="link" onClick={hnadleLearnMore}>Learn More</a>
+              <a className="link" onClick={handleLearnMore}>Learn More</a>
             </li>
           </ul>
         </div>
