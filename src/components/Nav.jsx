@@ -9,7 +9,7 @@ const Nav = () => {
       <div className="nav-content">
         <ul className="list-styled">
           <li>
-            <img src={Logo} alt="Apple" />
+            <img src={Logo} width={60} height={60}  alt="Apple" />
           </li>
           <li>
             <a className="link-styled">Store</a>

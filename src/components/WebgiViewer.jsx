@@ -28,13 +28,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const WebgiViewer = forwardRef((props, ref) => {
   const canvasRef = useRef(null);
-
   const [viewerRef, setViewerRef] = useState(null);
   const [targetRef, setTargetRef] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [positionRef, setPositionRef] = useState(null);
   const canvasContainerRef = useRef(null);
   const [previewMode, setpreviewMode] = useState(false);
+  const [isMobile, setIsMobile] = useState(null);
 
   useImperativeHandle(ref, () => ({
     triggerPreview() {
@@ -77,6 +77,8 @@ const WebgiViewer = forwardRef((props, ref) => {
     });
 
     setViewerRef(viewer);
+    const isMobileorTablet = mobileAndTabletCheck();
+    setIsMobile(isMobileorTablet);
 
     // Add some plugins
     const manager = await viewer.addPlugin(AssetManagerPlugin);
@@ -109,6 +111,12 @@ const WebgiViewer = forwardRef((props, ref) => {
 
     viewer.scene.activeCamera.setCameraOptions({ controlsEnabled: false });
 
+    if (isMobileorTablet) {
+      position.set(-16.7, 1.17, 11.7);
+      target.set(0, 1.37, 0);
+      props.contentRef.current.className = "mobile-or-tablet";
+    }
+    
     window.scrollTo(0, 0);
 
     let needsUpdate = true;
